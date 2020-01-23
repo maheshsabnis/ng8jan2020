@@ -1,0 +1,66 @@
+<h2>The Reactive Product Information</h2>
+<div class="container">
+    <!--Bind the formGroup with form tag-->
+    <form name="frmProuct" [formGroup]="frmProduct" (ngSubmit)="save()">
+        <div class="form-group">
+            <label>Product Row Id</label>
+            <!--Bind each editable element with key of FormControl-->
+            <input type="text" formControlName="ProductRowId" name="ProductRowId" class="form-control">
+            <div class="alert alert-danger" *ngIf="frmProduct.controls.ProductRowId.dirty && !frmProduct.controls.ProductRowId.valid">
+                <p *ngIf="frmProduct.controls.ProductRowId.errors.required">Product Row Id is Required</p>
+                <p *ngIf="frmProduct.controls.ProductRowId.errors.pattern">Product Row Id must be numeric</p>
+                <p *ngIf="frmProduct.controls.ProductRowId.errors.minlength">Product Row Id must be 2 digits minimum</p>
+                <p *ngIf="frmProduct.controls.ProductRowId.errors.maxlength">Product Row Id must be 6 digits maximum</p>
+                <p *ngIf="!frmProduct.controls.ProductRowId.valid">Product Row Id must be even</p>
+
+            </div>
+        </div>
+        <div class="form-group">
+            <label>Product Id</label>
+            <input type="text" formControlName="ProductId" name="ProductId" class="form-control">
+        </div>
+        <div class="form-group">
+            <label>Product Name</label>
+            <input type="text" formControlName="ProductName" name="ProductName" class="form-control">
+        </div>
+        <div class="form-group">
+            <label>Category Name</label>
+            <select class="form-control" formControlName="CategoryName" name="CategoryName">
+        <option *ngFor="let c of categories" value="{{c}}">{{c}}</option>
+      </select>
+        </div>
+        <div class="form-group">
+            <label>Manufacturer</label>
+            <select class="form-control" formControlName="Manufacturer" name="Manufacturer">
+        <option *ngFor="let m of manufacturers" value="{{m}}">{{m}}</option>
+      </select>
+        </div>
+        <div class="form-group">
+            <label>Description</label>
+            <input type="text" class="form-control" formControlName="Description" name="Description">
+        </div>
+        <div class="form-group">
+            <label>Base Price</label>
+            <input type="text" class="form-control" formControlName="BasePrice" name="BasePrice">
+        </div>
+        <div class="form-group">
+            <input type="button" value="New" class="btn btn-warning" (click)="clear()">
+            <input type="submit" [disabled]="!frmProduct.valid" value="Save" class="btn btn-success">
+        </div>
+    </form>
+</div>
+<br>
+<div class="contianer">
+    <table class="table table-bordered table-striped">
+        <thead>
+            <tr>
+                <th *ngFor="let c of columnHeaders">{{c}}</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let p of products" (click)="getSelectedProduct(p)">
+                <td *ngFor="let c of columnHeaders">{{p[c]}}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
