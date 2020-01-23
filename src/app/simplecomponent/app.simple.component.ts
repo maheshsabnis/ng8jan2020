@@ -1,5 +1,6 @@
 import {Component} from '@angular/core'
 
+import {UtilityService} from './../services/app.utility.service';
 // selector --> the custom HTML tage using which the component's html will 
 // be rendered in index.html
 // templateUrl --> the html file that will be rendered where the 'selector'
@@ -21,13 +22,15 @@ export class SimpleComponent {
   name: string;
   header: string;
 
-  constructor() {
+  // inject the UtilityService in ctor
+  constructor(private serv: UtilityService) {
     this.header = 'The Simple Component';
     this.name = 'Mahesh Sabnis';
     this.message = 'The Component';
   }
 
   display(event){
+     this.header = this.serv.chagneCase(this.header, 'U'); 
      this.message = `The display method ${event.target.value}`;
   }
 }
