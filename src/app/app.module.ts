@@ -18,6 +18,15 @@ import {CommunicationService} from './services/app.communication.service';
 // imporing the SharedModule
 import {SharedModule} from './../sharedmodule/app.shared.module';
 import { HttpComponent } from './httpcomponent/app.http.component';
+import { CORSComponent } from './corscomponent/app.cors.component';
+import { HomeComponent } from './routingapp/app.home.component';
+import { AboutComponent } from './routingapp/app.about.component';
+import { ContactComponent } from './routingapp/app.contact.component';
+import { MainComponent } from './routingapp/app.main.component';
+import { DynamicTableComponent } from './dynamictablecomponent/app.dynamictable.component';
+import { EmpComponent } from './empcomponent/app.emp.component';
+import { ColorDirective } from './customdirective/app.color.directive';
+import { DirectiveComponent } from './directicecomponent/app.directive.component';
 
 // imports: Of the type array, used to import standard angular modules and
 // custom external modules in current application
@@ -37,13 +46,16 @@ import { HttpComponent } from './httpcomponent/app.http.component';
     AppComponent, SimpleComponent, ProductFormComponent,
     ProductReactiveFormComponent,
     CatMasterComponent, PrdChildComponent,
-    CatSenderComponent, PrdReceiverComponent, HttpComponent
+    CatSenderComponent, PrdReceiverComponent, HttpComponent,
+    CORSComponent, DynamicTableComponent,EmpComponent,
+    HomeComponent, AboutComponent,ContactComponent,MainComponent,
+    ColorDirective, DirectiveComponent
   ],
   imports: [
     BrowserModule, FormsModule, ReactiveFormsModule,
     AppRoutingModule, SharedModule // the AppModule will use DI of SharedModule
   ],
   providers: [UtilityService,CommunicationService],
-  bootstrap: [ProductFormComponent]
+  bootstrap: [DirectiveComponent]
 })
 export class AppModule { }

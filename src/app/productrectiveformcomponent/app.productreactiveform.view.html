@@ -58,7 +58,7 @@
             </tr>
         </thead>
         <tbody>
-            <tr *ngFor="let p of products" (click)="getSelectedProduct(p)">
+            <tr *ngFor="let p of products">
                 <td *ngFor="let c of columnHeaders">{{p[c]}}</td>
             </tr>
         </tbody>

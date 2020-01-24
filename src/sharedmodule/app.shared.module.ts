@@ -6,10 +6,11 @@ import {HttpClientModule} from '@angular/common/http';
 import {HttpService} from './services/app.http.service';
 
 // shared modules can optionally import 'CommonModule' 
+import { CORSService } from './services/app.cors.service';
 // to execute all Components/Directives/Pipes
 
 @NgModule({
   imports: [CommonModule, HttpClientModule],
-  providers: [HttpService] // registering HttpService in DI
+  providers: [HttpService, CORSService] // registering HttpService in DI
 })
 export class SharedModule { }
